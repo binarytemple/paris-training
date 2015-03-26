@@ -1,0 +1,323 @@
+yum search riak 
+bg
+ping google.com
+fg
+yum search riak 
+tail -f /tmp/build-output.log 
+ls -la
+erl
+ulimit -n 
+ulimit -n
+ulimit -n 65000
+ulimit -n
+ls -la /etc/security/limits.d/
+vim /etc/security/limits.d/vagrant.conf 
+fg
+ls -la
+cd ./riak/
+ls -la
+pwd
+ls -la
+cd dev/
+ls -la
+ls -la ./dev1/
+ls -la ./dev2/
+./dev1/bin/riak start
+./dev1/bin/riak ping
+ps awux | grep beam 
+cd riak/dev
+./dev2/bin/riak start
+./dev3/bin/riak start
+ps awux | grep beam  | wc -l 
+ls -la
+./dev3/bin/riak-admin 
+./dev3/bin/riak 
+./dev4/bin/riak  console 
+./dev4/bin/riak  
+./dev3/bin/riak attach
+./dev3/bin/riak
+./dev3/bin/riak top
+./dev3/bin/riak
+./dev3/bin/riak top
+./dev3/bin/riak
+./dev3/bin/riak config 
+./dev3/bin/riak config effective |  less
+v ./dev3/etc/riak.conf 
+vi ./dev3/etc/riak.conf 
+./dev3/bin/riak config effective |  wc -l
+./dev3/bin/riak config effective |  less
+./dev3/bin/riak 
+./dev1/bin/riak-admin 
+./dev1/bin/riak-admin cluster
+./dev1/bin/riak-admin cluster | less 
+./dev1/bin/riak-admin 
+./dev1/bin/riak-admin member-status
+v ./dev1/etc/riak.conf 
+vi ./dev1/etc/riak.conf 
+ps awux | grep epmd
+./dev1/bin/riak-admin member-status
+ps awux | grep beam 
+ps awux | grep beam  | wc
+./dev3/bin/riak config effective |  less
+./dev2/bin/riak-admin cluster join dev1@127.0.0.1
+./dev2/bin/riak-admin member-status
+./dev3/bin/riak-admin cluster join dev2@127.0.0.1
+./dev2/bin/riak-admin member-status
+./dev3/bin/riak-admin cluster plan 
+./dev3/bin/riak-admin cluster commit 
+history -w
+fc -l 
+fc -l -50 | less
+./dev3/bin/riak-admin 
+./dev3/bin/riak-admin ring-status
+./dev3/bin/riak-admin vnode-status
+./dev3/bin/riak-admin
+./dev3/bin/riak-admin member-status
+./dev3/bin/riak-admin transfers
+./dev3/bin/riak-admin ring-status
+./dev3/bin/riak-admin member-status
+for i in 1 2 3; do dev$i/bin/riak stop ; done 
+for i in 1 2 3; do dev$i/bin/riak ping ; done 
+for i in 1 2 3; do vim dev$i/etc/riak.conf ; done 
+fg
+for i in 1 2 3; do vim dev$i/etc/riak.conf ; done 
+ls -la ./dev1/data/
+ls -la ./dev1/data/ring/
+cd ..
+git clone https://github.com/binarytemple/paris-training.git
+bg
+ls -la paris-training/.git/
+fg
+git clone git@github.com:binarytemple/paris-training.git
+fg
+pwd
+rm -rf ./paris-training
+fg
+ls -la
+wget cnn.com
+set | grep -i proxy
+unset HTTPS_PROXY
+unset HTTP_PROXY
+unset http_proxy
+unset https_proxy
+wget cnn.com
+fc -l -10
+sudo vim /etc/profile
+sudo vim /etc/profile.d/proxy.sh 
+fc -l -10
+git clone https://github.com/binarytemple/paris-training.git
+cd paris-training/
+git pull
+for i in 1 2 3; do /home/vagrant/riak/dev/dev$i/bin/riak stop ; done
+for i in 1 2 3; do /home/vagrant/riak/dev/dev$i/bin/riak start; done
+curl localhost:10018 
+curl localhost:10018/types/default/buckets/foo/keys/bar
+cd ~/riak/
+v .git/config 
+vi .git/config 
+git pull 
+curl localhost:10018/types/default/buckets/foo/keys/bar
+netstat -nap | grep 100
+netstat -nap | grep "100*8"
+netstat -nap | egrep "100[0-9]8"
+curl localhost:10018/types/default/buckets/foo/keys/bar
+curl -XPUT localhost:10018/types/default/buckets/foo/keys/bar -d foo
+curl localhost:10018/types/default/buckets/foo/keys/bar
+curl localhost:10018/types/default/buckets/foo/keys/baz
+vim /tmp/test.txt
+curl -XPUT localhost:10018/types/default/buckets/foo/keys/bar -d @/tmp/text.txt
+curl -XPUT localhost:10018/types/default/buckets/foo/keys/bar -d@/tmp/text.txt
+curl -XPUT localhost:10018/types/default/buckets/foo/keys/bar -D@/tmp/text.txt
+curl -XPUT localhost:10018/types/default/buckets/foo/keys/bar -d @/tmp/text.txt
+ls -ls /tmp/test.txt 
+cat /tmp/test.txt 
+curl -XPUT localhost:10018/types/default/buckets/foo/keys/bar -d @/tmp/test.txt
+curl  localhost:10018/types/default/buckets/foo/keys/bar
+curl  localhost:10028/types/default/buckets/foo/keys/bar
+curl  localhost:10038/types/default/buckets/foo/keys/bar
+curl -XPUT localhost:10018/types/default/buckets/foo/keys/bar -d @/tmp/test.txt
+curl -XGET -vvvv  localhost:10018/types/default/buckets/foo/keys/bar 
+curl -XPUT -vvvv  localhost:10018/types/default/buckets/paris/keys/riak-example -d " a riak example " 
+curl localhost:10018/types/default/buckets/paris/keys/riak-example
+curl -XPUT -vvvv  localhost:10018/types/default/buckets/paris/keys/riak-example2 -d " a riak example "  | less
+curl -XPUT -vvvv  localhost:10018/types/default/buckets/paris/keys/riak-example3 -d " a riak example " 2>&1 | less
+curl -XHEAD -vvvv localhost:10018/types/default/buckets/paris/keys/riak-example3 | less
+curl -XPUT -vvvv  localhost:10018/types/default/buckets/paris/keys/riak-example3 -d " a riak example " 
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/keys/riak-example3
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/keys/riak-example3 | less
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/props
+curl -XGET -vvv  localhost:10018/types/default/buckets/props
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/props
+curl -XPUT  localhost:10018/types/default/buckets/paris/props -d '{"props":{"name":"paris","allow_mult":true}'
+curl -XPUT  localhost:10018/types/default/buckets/paris/props -d '{"props":{"name":"paris","allow_mult":true}}'
+curl -XPUT  localhost:10018/types/default/buckets/paris/props -d '{"props":{"name":"paris","allow_mult":"true"}}'
+curl -XPUT -X"content-type :application/json'  localhost:10018/types/default/buckets/paris/props -d '{"props":{"name":"paris","allow_mult":true}}'
+curl -XPUT -X"content-type :application/json"  localhost:10018/types/default/buckets/paris/props -d '{"props":{"name":"paris","allow_mult":true}}'
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/props
+curl -XPUT -X"content-type : application/json"  localhost:10018/types/default/buckets/paris/props -d '{"props":{"name":"paris","allow_mult":true}}'
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/props
+curl -XPUT -H"content-type : application/json"  localhost:10018/types/default/buckets/paris/props -d '{"props":{"name":"paris","allow_mult":true}}'
+curl -XPUT -H "content-type: application/json" localhost:10018/types/default/buckets/paris/props -d '{"props":{"name":"paris","allow_mult":true}}'
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/props
+curl -XPUT -vvvv  localhost:10018/types/default/buckets/paris/keys/riak-example3 -d " a riak example " 
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/keys/riak-example3 | less
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/keys/riak-example3 2>&1 | less
+curl -XPUT -vvvv  localhost:10018/types/default/buckets/paris/keys/riak-example4 -d " a riak example " 
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/keys/riak-example4
+curl -XPUT -vvvv -X"X-Riak-Vclock: a85hYGBgzGDKBVIcR4M2cvcyhkRnMCUy5rEyxCZ0nOPLAgA="  localhost:10018/types/default/buckets/paris/keys/riak-example4 -d " a riak example second " 
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/keys/riak-example4
+curl -XPUT -vvvv -H"X-Riak-Vclock: a85hYGBgzGDKBVIcR4M2cvcyhkRnMCUy5rEyxCZ0nOPLAgA="  localhost:10018/types/default/buckets/paris/keys/riak-example4 -d " a riak example second " 
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/keys/riak-example4
+fc -l -20 
+history -w
+ps awux | grep beam 
+cd riak/dev
+./dev2/bin/riak start
+./dev3/bin/riak start
+ps awux | grep beam  | wc -l 
+ls -la
+./dev3/bin/riak-admin 
+./dev3/bin/riak 
+./dev4/bin/riak  console 
+./dev4/bin/riak  
+./dev3/bin/riak attach
+./dev3/bin/riak
+./dev3/bin/riak top
+./dev3/bin/riak
+./dev3/bin/riak top
+./dev3/bin/riak
+./dev3/bin/riak config 
+./dev3/bin/riak config effective |  less
+v ./dev3/etc/riak.conf 
+vi ./dev3/etc/riak.conf 
+./dev3/bin/riak config effective |  wc -l
+./dev3/bin/riak config effective |  less
+./dev3/bin/riak 
+./dev1/bin/riak-admin 
+./dev1/bin/riak-admin cluster
+./dev1/bin/riak-admin cluster | less 
+./dev1/bin/riak-admin 
+./dev1/bin/riak-admin member-status
+v ./dev1/etc/riak.conf 
+vi ./dev1/etc/riak.conf 
+ps awux | grep epmd
+./dev1/bin/riak-admin member-status
+ps awux | grep beam 
+ps awux | grep beam  | wc
+./dev3/bin/riak config effective |  less
+./dev2/bin/riak-admin cluster join dev1@127.0.0.1
+./dev2/bin/riak-admin member-status
+./dev3/bin/riak-admin cluster join dev2@127.0.0.1
+./dev2/bin/riak-admin member-status
+./dev3/bin/riak-admin cluster plan 
+./dev3/bin/riak-admin cluster commit 
+history -w
+fc -l 
+fc -l -50 | less
+./dev3/bin/riak-admin 
+./dev3/bin/riak-admin ring-status
+./dev3/bin/riak-admin vnode-status
+./dev3/bin/riak-admin
+./dev3/bin/riak-admin member-status
+./dev3/bin/riak-admin transfers
+./dev3/bin/riak-admin ring-status
+./dev3/bin/riak-admin member-status
+for i in 1 2 3; do dev$i/bin/riak stop ; done 
+for i in 1 2 3; do dev$i/bin/riak ping ; done 
+for i in 1 2 3; do vim dev$i/etc/riak.conf ; done 
+fg
+for i in 1 2 3; do vim dev$i/etc/riak.conf ; done 
+ls -la ./dev1/data/
+ls -la ./dev1/data/ring/
+cd ..
+git clone https://github.com/binarytemple/paris-training.git
+bg
+ls -la paris-training/.git/
+fg
+git clone git@github.com:binarytemple/paris-training.git
+fg
+pwd
+rm -rf ./paris-training
+fg
+ls -la
+wget cnn.com
+set | grep -i proxy
+unset HTTPS_PROXY
+unset HTTP_PROXY
+unset http_proxy
+unset https_proxy
+wget cnn.com
+fc -l -10
+sudo vim /etc/profile
+sudo vim /etc/profile.d/proxy.sh 
+fc -l -10
+git clone https://github.com/binarytemple/paris-training.git
+cd paris-training/
+git pull
+for i in 1 2 3; do /home/vagrant/riak/dev/dev$i/bin/riak stop ; done
+for i in 1 2 3; do /home/vagrant/riak/dev/dev$i/bin/riak start; done
+curl localhost:10018 
+curl localhost:10018/types/default/buckets/foo/keys/bar
+cd ~/riak/
+v .git/config 
+vi .git/config 
+git pull 
+curl localhost:10018/types/default/buckets/foo/keys/bar
+netstat -nap | grep 100
+netstat -nap | grep "100*8"
+netstat -nap | egrep "100[0-9]8"
+curl localhost:10018/types/default/buckets/foo/keys/bar
+curl -XPUT localhost:10018/types/default/buckets/foo/keys/bar -d foo
+curl localhost:10018/types/default/buckets/foo/keys/bar
+curl localhost:10018/types/default/buckets/foo/keys/baz
+vim /tmp/test.txt
+curl -XPUT localhost:10018/types/default/buckets/foo/keys/bar -d @/tmp/text.txt
+curl -XPUT localhost:10018/types/default/buckets/foo/keys/bar -d@/tmp/text.txt
+curl -XPUT localhost:10018/types/default/buckets/foo/keys/bar -D@/tmp/text.txt
+curl -XPUT localhost:10018/types/default/buckets/foo/keys/bar -d @/tmp/text.txt
+ls -ls /tmp/test.txt 
+cat /tmp/test.txt 
+curl -XPUT localhost:10018/types/default/buckets/foo/keys/bar -d @/tmp/test.txt
+curl  localhost:10018/types/default/buckets/foo/keys/bar
+curl  localhost:10028/types/default/buckets/foo/keys/bar
+curl  localhost:10038/types/default/buckets/foo/keys/bar
+curl -XPUT localhost:10018/types/default/buckets/foo/keys/bar -d @/tmp/test.txt
+curl -XGET -vvvv  localhost:10018/types/default/buckets/foo/keys/bar 
+curl -XPUT -vvvv  localhost:10018/types/default/buckets/paris/keys/riak-example -d " a riak example " 
+curl localhost:10018/types/default/buckets/paris/keys/riak-example
+curl -XPUT -vvvv  localhost:10018/types/default/buckets/paris/keys/riak-example2 -d " a riak example "  | less
+curl -XPUT -vvvv  localhost:10018/types/default/buckets/paris/keys/riak-example3 -d " a riak example " 2>&1 | less
+curl -XHEAD -vvvv localhost:10018/types/default/buckets/paris/keys/riak-example3 | less
+curl -XPUT -vvvv  localhost:10018/types/default/buckets/paris/keys/riak-example3 -d " a riak example " 
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/keys/riak-example3
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/keys/riak-example3 | less
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/props
+curl -XGET -vvv  localhost:10018/types/default/buckets/props
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/props
+curl -XPUT  localhost:10018/types/default/buckets/paris/props -d '{"props":{"name":"paris","allow_mult":true}'
+curl -XPUT  localhost:10018/types/default/buckets/paris/props -d '{"props":{"name":"paris","allow_mult":true}}'
+curl -XPUT  localhost:10018/types/default/buckets/paris/props -d '{"props":{"name":"paris","allow_mult":"true"}}'
+curl -XPUT -X"content-type :application/json'  localhost:10018/types/default/buckets/paris/props -d '{"props":{"name":"paris","allow_mult":true}}'
+curl -XPUT -X"content-type :application/json"  localhost:10018/types/default/buckets/paris/props -d '{"props":{"name":"paris","allow_mult":true}}'
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/props
+curl -XPUT -X"content-type : application/json"  localhost:10018/types/default/buckets/paris/props -d '{"props":{"name":"paris","allow_mult":true}}'
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/props
+curl -XPUT -H"content-type : application/json"  localhost:10018/types/default/buckets/paris/props -d '{"props":{"name":"paris","allow_mult":true}}'
+curl -XPUT -H "content-type: application/json" localhost:10018/types/default/buckets/paris/props -d '{"props":{"name":"paris","allow_mult":true}}'
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/props
+curl -XPUT -vvvv  localhost:10018/types/default/buckets/paris/keys/riak-example3 -d " a riak example " 
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/keys/riak-example3 | less
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/keys/riak-example3 2>&1 | less
+curl -XPUT -vvvv  localhost:10018/types/default/buckets/paris/keys/riak-example4 -d " a riak example " 
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/keys/riak-example4
+curl -XPUT -vvvv -X"X-Riak-Vclock: a85hYGBgzGDKBVIcR4M2cvcyhkRnMCUy5rEyxCZ0nOPLAgA="  localhost:10018/types/default/buckets/paris/keys/riak-example4 -d " a riak example second " 
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/keys/riak-example4
+curl -XPUT -vvvv -H"X-Riak-Vclock: a85hYGBgzGDKBVIcR4M2cvcyhkRnMCUy5rEyxCZ0nOPLAgA="  localhost:10018/types/default/buckets/paris/keys/riak-example4 -d " a riak example second " 
+curl -XGET -vvv  localhost:10018/types/default/buckets/paris/keys/riak-example4
+fc -l -20 
+history -w
+cp ~/.bash_history ~/paris-training/examples/history.txt
+cd ~/paris-training/
+ls -la
+git add --all
+git commit -m history
