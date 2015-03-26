@@ -1,0 +1,2 @@
+for i in 1 2 3; do /home/vagrant/riak/dev/dev$i/bin/riak stop ; done
+for i in 1 2 3; do /home/vagrant/riak/dev/dev$i/bin/riak start; done
