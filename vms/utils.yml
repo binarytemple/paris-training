@@ -1,0 +1,35 @@
+---
+- hosts: all
+  sudo: yes
+  tasks:
+
+  #- name: enable epel
+  #  sudo: True
+  #  shell: "yum-config-manager --enable epel"
+
+  - name: install epel-release
+    action: yum name=epel-release state=present 
+
+  - name: upgrade all packages
+    yum: name="*" state=latest
+  - name: install multiple packages
+    action: yum name="{{item}}" enablerepo=epel state=present 
+    with_items:
+    - vim 
+    - tcpdump 
+    - zsh
+    - git
+    - tmux
+    - python-pycurl
+    - s3cmd
+    - curl
+    - htop
+    - gcc-c++
+    - python-pip
+    - inotify-tools
+    - inotify-tools-devel
+    - python-inotify
+    - pam-devel
+    - libselinux-python
+
+  - pip: name=bottle   state=present

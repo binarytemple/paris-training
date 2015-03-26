@@ -1,0 +1,2 @@
+export PYTHONUNBUFFERED=1
+test -f hosts || echo "no hosts file available"

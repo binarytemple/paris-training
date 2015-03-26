@@ -1,0 +1,17 @@
+- hosts: all
+#  TODO: Get working on Centos 6.5
+#  tasks:
+#
+#  - stat: path=basho_bench/basho_bench
+#    register: basho_bench_installed
+#
+#  - name: checkout basho_bench
+#    sudo: no
+#    git: repo=git@github.com:basho/basho_bench.git dest=basho_bench
+#    register: git_result
+#    when: not basho_bench_installed.stat.exists
+#
+#  - name: build basho_bench
+#    sudo: no
+#    shell: "cd /home/{{ansible_env['USER']}}/basho_bench && make"
+#    when: not basho_bench_installed.stat.exists

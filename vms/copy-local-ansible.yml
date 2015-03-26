@@ -1,0 +1,11 @@
+- hosts: all
+  sudo: False
+  tasks:
+  - yum:  name=libyaml-devel enablerepo=epel state=present 
+    sudo: True
+  - yum:  name=python-devel enablerepo=epel state=present 
+    sudo: True
+  - copy: src=ansible-local/ dest=/home/{{ansible_env['USER']}}/ 
+  - name: install ansible
+    sudo: True
+    pip: name=ansible

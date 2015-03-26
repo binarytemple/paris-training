@@ -1,0 +1,20 @@
+---
+- hosts: all
+  sudo: yes
+  tasks:
+  - name: upgrade all packages
+    yum: name="*" state=latest
+  - name: install multiple packages
+    action: yum name="{{item}}" enablerepo=epel state=present 
+    with_items:
+    - vim 
+    - tcpdump 
+    - zsh
+    - git
+    - tmux
+    - python-pycurl
+    - s3cmd
+    - curl
+  - name: vim for {{ansible_env['USER']}}
+    sudo: yes
+    copy: src='templates/home_{{ansible_env['USER']}}_.vimrc' dest='/home/{{ansible_env['USER']}}/.vimrc' mode=644

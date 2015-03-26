@@ -1,0 +1,10 @@
+---
+ - hosts: all
+   tasks:
+   - stat: path=riak-ops/README.md
+     register: riak_ops
+   - name: checkout riak_ops
+     sudo: no
+     action: git repo=git@github.com:roooms/riak-ops.git dest=riak-ops
+     register: git_result
+     when: not riak_ops.stat.exists

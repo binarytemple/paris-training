@@ -1,0 +1,60 @@
+---
+- hosts: all
+  sudo: yes
+  tasks:
+  - name: install multiple packages
+    action: yum name="{{item}}" enablerepo=epel state=present 
+    with_items:
+    - munin 
+    - nginx
+    - munin-async
+    - munin-common
+    - munin-netip-plugins
+    - munin-nginx
+    - munin-node
+    notify: 
+    - restart nginx
+    - restart munin-fcgi-graph
+    - restart munin-fcgi-html 
+
+- hosts: all
+  sudo: yes
+  tasks:
+  - name: add github key
+    lineinfile: dest=/etc/ssh/ssh_known_hosts line='|1|KWI6LgcTkLS4a3J/jfyOaS6CIKE=|VIpECtP9TDwqZvzNIUSd01ZyKTI= ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==' owner=root state=present create=True
+  - name: munin_riak checkout 
+    sudo: no
+    git: repo=git@github.com:binarytemple/munin-riak.git dest=munin-riak
+    register: munin_riak_result
+
+#  - name: copy the riak plugin to munin plugins director
+#    sudo: yes
+#    shell: "cp /home/{{ansible_env['USER']}}/munin-riak/* /usr/share/munin/plugins/"
+#  
+#  - file: src=/usr/share/munin/plugins/riak_coord_redirs       dest=/etc/munin/plugins/riak_coord_redirs     state=link
+#  - file: src=/usr/share/munin/plugins/riak_erlang_memory      dest=/etc/munin/plugins/riak_erlang_memory    state=link 
+#  - file: src=/usr/share/munin/plugins/riak_erlang_processes   dest=/etc/munin/plugins/riak_erlang_processes state=link 
+#  - file: src=/usr/share/munin/plugins/riak_node_get_put       dest=/etc/munin/plugins/riak_node_get_put     state=link  
+#  - file: src=/usr/share/munin/plugins/riak_pbc_connection     dest=/etc/munin/plugins/riak_pbc_connection   state=link  
+#  - file: src=/usr/share/munin/plugins/riak_read_repairs       dest=/etc/munin/plugins/riak_read_repairs     state=link 
+#  - file: src=/usr/share/munin/plugins/riak_vnode_get_put      dest=/etc/munin/plugins/riak_vnode_get_put    state=link   
+#
+#  - name: make munin output directory the webroot
+#    sudo: yes 
+#    lineinfile: line='root /var/www/html/munin;' dest=/etc/nginx/nginx.conf state=present regexp='\s*root\s*\/.*;.*'
+#    notify: restart nginx
+
+#  - name: copy nginx tempate
+#    sudo: yes
+#    copy: src='./templates/etc_nginx_sites-available_default' dest='/etc/nginx/conf.d/default' mode=644 
+#    notify: restart nginx
+
+  handlers:
+   - name: restart nginx
+     service: name=nginx state=restarted
+
+   - name: restart munin-fcgi-graph
+     service: name=munin-fcgi-graph state=restarted
+
+   - name: restart munin-fcgi-html 
+     service: name=munin-fcgi-html state=restarted

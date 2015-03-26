@@ -1,0 +1,54 @@
+- hosts: localhost
+  sudo: False
+  tasks:
+#  - name: determine the installation user
+#    sudo: False
+#    set_fact: installation_user="{{ansible_user_id}}"
+#  - debug: msg="installation_user {{installation_user}}"
+#  - name: "Install the ubuntu hosts file"
+#    sudo: True
+#    template: src="templates/etc_security_limits.d_ubuntu.conf.j2" dest="/etc/security/limits.d/{{installation_user}}.conf" backup=yes mode=0644 owner=root group=root
+#  - name: update pam configuration
+#    lineinfile: line="session    required   pam_limits.so" dest={{ item }} regexp="session    required   pam_limits.so" insertafter="^# end of pam-auth-update config"
+#    with_items:
+#      - /etc/pam.d/common-session
+#      - /etc/pam.d/common-session-noninteractive
+
+- hosts: localhost
+  tasks:
+  - name: template all riak_ee dev nodes
+    template: src=ee.app.config.j2 dest=riak_ee/dev/dev{{item}}/etc/app.config backup=yes
+    ignore_errors: yes
+    with_items:
+     - 1
+     - 2
+     - 3
+     - 4
+     - 5
+     - 6
+
+- hosts: localhost
+  tasks:
+  - name: template all riak nodes
+    template: src=app.config.j2 dest=riak/dev/dev{{item}}/etc/app.config backup=yes
+    ignore_errors: yes
+    with_items:
+     - 1
+     - 2
+     - 3
+     - 4
+     - 5
+     - 6
+
+- hosts: localhost
+  tasks:
+  - name: template all riak_ee dev nodes (vm.args)
+    template: src=vm.args.j2 dest=riak_ee/dev/dev{{item}}/etc/vm.args backup=yes
+    ignore_errors: yes
+    with_items:
+     - 1
+     - 2
+     - 3
+     - 4
+     - 5
+     - 6

@@ -1,0 +1,7 @@
+- hosts: all
+  sudo: True
+  tasks:
+  - lineinfile: dest=/etc/environment       state=absent  regexp=".*HTTP_PROXY"
+  - lineinfile: dest=/etc/environment       state=absent  regexp=".*http_proxy"
+  - lineinfile: dest=/etc/profile.d/proxy.sh state=absent regexp=".*HTTP_PROXY"
+  - lineinfile: dest=/etc/profile.d/proxy.sh state=absent regexp=".*http_proxy"

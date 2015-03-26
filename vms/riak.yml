@@ -1,0 +1,32 @@
+- hosts: all
+  sudo: False
+  tasks:
+  # If I don't do call setup again (to re-gather facts) HOME will be set to the root users home... a feature..
+  - action: setup
+
+  - stat: path=/home/{{ansible_env['USER']}}/riak/rebar.conf
+    register: riak_downloaded
+
+  - stat: path=/home/{{ansible_env['USER']}}/riak_ee/rebar.conf
+    register: riak_ee_downloaded
+
+  - name: checkout riak-2.0.5
+    sudo: no
+    git: repo=git@github.com:basho/riak.git dest={{ansible_env['HOME']}}/riak version=riak-2.0.5
+    register: git_result
+    when: not riak_ee_downloaded.stat.exists
+
+  - stat: path={{ansible_env['HOME']}}/riak/dev/dev1/bin/riak
+    register: riak_devrel
+
+  - stat: path={{ansible_env['HOME']}}/riak_ee/dev/dev1/bin/riak
+    register: riak_ee_devrel
+
+  - name: build riak devrel 6
+    sudo: no
+    shell: "(cd {{ansible_env['HOME']}}/riak/ && make devrel DEVNODES=6  ) > /tmp/build-output.log"
+    when: not riak_devrel.stat.exists
+
+  - name: ulimit for {{ansible_env['USER']}}
+    sudo: yes
+    template: src='./templates/etc_security_limits.d_user.conf' dest='/etc/security/limits.d/{{ansible_env['USER']}}.conf' mode=644
